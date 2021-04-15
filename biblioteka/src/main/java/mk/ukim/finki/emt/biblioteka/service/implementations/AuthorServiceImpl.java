@@ -8,6 +8,7 @@ import mk.ukim.finki.emt.biblioteka.repository.CountryRepository;
 import mk.ukim.finki.emt.biblioteka.service.AuthorService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,6 +19,11 @@ public class AuthorServiceImpl implements AuthorService {
     public AuthorServiceImpl(AuthorRepostitory authorRepostitory, CountryRepository countryRepository) {
         this.authorRepostitory = authorRepostitory;
         this.countryRepository = countryRepository;
+    }
+
+    @Override
+    public List<Author> listAll() {
+        return this.authorRepostitory.findAll();
     }
 
     @Override

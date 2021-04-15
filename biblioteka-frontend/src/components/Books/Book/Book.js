@@ -1,5 +1,6 @@
 import React from 'react'
 import './Book.css'
+import {Link} from 'react-router-dom'
 
 const Book = (props) => {
     return (
@@ -10,9 +11,9 @@ const Book = (props) => {
                 <h5>{props.book.category}</h5>
             </div>
             <div className="bookControls">
-                <button>Edit</button>
-                <button className="deleteBtn">Delete</button>
-                <button>Mark as Taken</button>
+                <Link to={`/book/edit/${props.book.id}`} onClick={() => props.onEdit(props.book.id)} className="btn btn-info">Edit</Link>
+                <button onClick={() => {props.onDelete(props.book.id)}} className="btn btn-danger">Delete</button>
+                <button onClick={() => {props.markAsTaken(props.book.id)}} className="btn btn-primary">Mark as Taken</button>
             </div>
             <div className="bookCopies">
                 <h5>Available copies: {props.book.availableCopies}</h5>

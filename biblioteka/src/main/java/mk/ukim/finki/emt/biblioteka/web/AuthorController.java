@@ -6,6 +6,8 @@ import mk.ukim.finki.emt.biblioteka.service.AuthorService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api/authors")
@@ -14,6 +16,11 @@ public class AuthorController {
 
     public AuthorController(AuthorService authorService) {
         this.authorService = authorService;
+    }
+
+    @GetMapping
+    public List<Author> getAll(){
+        return this.authorService.listAll();
     }
 
     @GetMapping("/{id}")
